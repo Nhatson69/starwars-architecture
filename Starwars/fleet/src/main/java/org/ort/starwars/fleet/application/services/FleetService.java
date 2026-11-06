@@ -3,6 +3,8 @@ package org.ort.starwars.fleet.application.services;
 import java.util.Collections;
 import java.util.List;
 
+import org.ort.starwars.fleet.application.ports.in.FleetServiceUseCase;
+import org.ort.starwars.fleet.application.ports.out.StarshipRepositoryPort;
 import org.ort.starwars.fleet.domain.models.Mission;
 import org.ort.starwars.fleet.domain.models.entities.Starship;
 import org.ort.starwars.fleet.domain.services.FleetStrategyDefaut;
@@ -18,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class FleetService {
+public class FleetService implements FleetServiceUseCase {
 
     private final FleetStrategy[] strategies = {
             new FleetStrategyMinEntropy(),
@@ -27,7 +29,7 @@ public class FleetService {
             new FleetStrategyDefaut()
     };
 
-    private final StarshipRepository repository;
+    private final StarshipRepositoryPort repository;
 
     /**
      * Réserve une flotte de vaisseaux avec une stratégie adaptée à la mission

@@ -2,6 +2,7 @@ package org.ort.starwars.fleet.infrastructure.adapters.controllers;
 
 import java.util.List;
 
+import org.ort.starwars.fleet.application.ports.in.FleetServiceUseCase;
 import org.ort.starwars.fleet.application.services.FleetService;
 import org.ort.starwars.fleet.domain.models.Mission;
 import org.ort.starwars.fleet.domain.models.entities.Starship;
@@ -17,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api")
 public class ApiEndpointFleetController {
 
-    private final FleetService fleetService;
+    private final FleetServiceUseCase fleetService;
 
     @PostMapping("/fleet")
     public List<Starship> post(@RequestBody Mission mission) {
